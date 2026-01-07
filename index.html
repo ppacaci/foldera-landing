@@ -1,8 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/favicon.ico" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta property="og:title" content="Foldera" />
+  <meta property="og:description" content="Evaluate your ETH with fixed terms and clear rules." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foldera.io" />
   <title>Foldera</title>
   <meta name="description" content="Evaluate your ETH with fixed terms and clear rules." />
   <style>
@@ -197,6 +202,15 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    const btn = document.querySelector('a.btn.primary');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Lightweight click tracking (works with most analytics tools)
+        console.log('waitlist_click');
+      });
+    }
   </script>
 </body>
 </html>
