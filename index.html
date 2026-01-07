@@ -4,39 +4,178 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Foldera</title>
+  <meta name="description" content="Evaluate your ETH with fixed terms and clear rules." />
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: #05070c;
+      color: #eaf0ff;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 18px 60px; }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px; }
+    .logo {
+      width: 34px; height: 34px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), rgba(255,255,255,0)),
+                  linear-gradient(135deg, rgba(120,180,255,.85), rgba(160,120,255,.85));
+      box-shadow: 0 10px 30px rgba(120,180,255,.18);
+    }
+    .pill {
+      font-size: 12px; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      margin-top: 26px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(120,180,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(160,120,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 50% 100%, rgba(70,220,200,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-inner { padding: 44px 22px; display:grid; gap: 26px; grid-template-columns: 1.2fr .8fr; align-items:center; }
+    @media (max-width: 860px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    h1 { margin:0; font-size: 44px; line-height: 1.05; letter-spacing: -0.8px; }
+    h2 { margin:14px 0 0; font-size: 16px; line-height: 1.55; color: rgba(234,240,255,.78); font-weight: 500; }
+    .subline { margin-top: 10px; font-size: 15px; color: rgba(234,240,255,.72); }
+
+    .cta { display:flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 14px; border-radius: 14px; font-weight: 650; font-size: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(120,180,255,.95), rgba(160,120,255,.95));
+      border-color: rgba(255,255,255,.18);
+      color: #071018;
+    }
+    .btn.primary:hover { background: linear-gradient(135deg, rgba(120,180,255,1), rgba(160,120,255,1)); }
+
+    .note { margin-top: 10px; font-size: 12px; color: rgba(234,240,255,.60); }
+
+    .cardgrid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    @media (max-width: 860px) { .cardgrid { grid-template-columns: 1fr; } }
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 14px;
+    }
+    .card h3 { margin:0; font-size: 13px; letter-spacing: .2px; color: rgba(234,240,255,.92); }
+    .card p { margin:8px 0 0; font-size: 13px; line-height: 1.45; color: rgba(234,240,255,.70); }
+
+    .rightbox {
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      padding: 16px;
+    }
+    .steps { margin: 0; padding-left: 18px; color: rgba(234,240,255,.78); font-size: 13px; line-height: 1.65; }
+    .tagline { font-size: 12px; color: rgba(234,240,255,.62); margin-top: 10px; }
+
+    .footer { margin-top: 26px; font-size: 12px; color: rgba(234,240,255,.55); display:flex; justify-content:space-between; flex-wrap: wrap; gap: 10px; }
+    .bg-lines {
+      position:absolute; inset: -40px -40px auto -40px; height: 220px;
+      opacity:.18;
+      background-image: linear-gradient(to right, rgba(255,255,255,.18) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size: 38px 38px;
+      transform: skewY(-8deg);
+      pointer-events:none;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Evaluate your ETH with fixed terms and clear rules.</h1>
-  <h2>Terms, conditions, and exit rules are defined upfront.</h2>
-  <p>Designed for long-term thinking, not short-term hype.</p>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Foldera</div>
+      </div>
+      <div class="pill">Early access</div>
+    </div>
 
-  <h3>How it works</h3>
-  <ol>
-    <li>Deposit ETH</li>
-    <li>Choose a fixed term</li>
-    <li>Hold, exit early, or complete the term</li>
-  </ol>
+    <section class="hero">
+      <div class="bg-lines"></div>
+      <div class="hero-inner">
+        <div>
+          <h1>Evaluate your ETH with fixed terms and clear rules.</h1>
+          <h2>Terms, conditions, and exit rules are defined upfront.</h2>
+          <div class="subline">Designed for long-term thinking, not short-term hype.</div>
 
-  <h3>Why Foldera?</h3>
-  <ul>
-    <li>Built around clarity, not complexity</li>
-    <li>Rules are defined before you participate</li>
-    <li>Flexibility without forced commitments</li>
-    <li>Designed for long-term sustainability</li>
-    <li>A controlled and disciplined approach</li>
-  </ul>
+          <div class="cta">
+            <!-- TODO: Replace FORM_LINK with your Google Form link -->
+            <a class="btn primary" href="FORM_LINK" target="_blank" rel="noopener">Join the waitlist</a>
+            <a class="btn" href="#faq">Read FAQ</a>
+          </div>
+          <div class="note">Early access registrations are collected via a short form. No payment required.</div>
 
-  <h3>FAQ</h3>
-  <ul>
-    <li><b>Is this a guaranteed return product?</b> No.</li>
-    <li><b>Can I exit before the term ends?</b> Yes, under predefined conditions.</li>
-    <li><b>Will there be a token in the future?</b> No token announced; future incentives may be introduced.</li>
-  </ul>
+          <div class="cardgrid">
+            <div class="card">
+              <h3>Clarity first</h3>
+              <p>Simple structure. Predictable rules. No hidden mechanics.</p>
+            </div>
+            <div class="card">
+              <h3>Defined exit conditions</h3>
+              <p>Early exit is possible under predefined conditions.</p>
+            </div>
+            <div class="card">
+              <h3>Built for durability</h3>
+              <p>Structure over hype. Long-term sustainability over aggressive promises.</p>
+            </div>
+          </div>
+        </div>
 
-  <h3>Risk & Disclaimer</h3>
-  <p>No guarantees. No hidden rules. Participation involves risk. Nothing here is investment advice.</p>
+        <div class="rightbox">
+          <div class="pill" style="display:inline-block; margin-bottom:12px;">How it works</div>
+          <ol class="steps">
+            <li>Deposit ETH</li>
+            <li>Choose a fixed term</li>
+            <li>Hold, exit early, or complete the term</li>
+          </ol>
+          <div class="tagline">No guarantees. No hidden rules. Participation involves risk.</div>
+        </div>
+      </div>
+    </section>
 
-  <h3>Join early access</h3>
-  <p><a href="#">Join the waitlist</a></p>
+    <section id="faq" style="margin-top:22px;">
+      <div class="card" style="padding:18px;">
+        <h3 style="margin:0; font-size:16px;">FAQ</h3>
+        <p style="margin:10px 0 0; color:rgba(234,240,255,.75); line-height:1.6;">
+          <b>Is this a guaranteed return product?</b> No.<br/>
+          <b>Can I exit before the term ends?</b> Yes, under predefined conditions.<br/>
+          <b>Will there be a token in the future?</b> No token announced; future incentive mechanisms may be introduced.
+        </p>
+      </div>
+
+      <div class="footer">
+        <div>© <span id="y"></span> Foldera</div>
+        <div>contact: info@foldera.io</div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
