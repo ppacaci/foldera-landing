@@ -101,6 +101,20 @@
       transform: skewY(-8deg);
       pointer-events:none;
     }
+    .trustbar{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .trustitem{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:rgba(234,240,255,.70);
+    }
   </style>
 </head>
 
@@ -128,6 +142,13 @@
             <a class="btn" href="#faq">Read FAQ</a>
           </div>
           <div class="note">Early access registrations are collected via a short form. No payment required.</div>
+          
+          <div class="trustbar">
+            <div class="trustitem">No payment</div>
+            <div class="trustitem">No commitment</div>
+            <div class="trustitem">30–60 sec form</div>
+            <div class="trustitem">Global early access</div>
+          </div>
 
           <div class="cardgrid">
             <div class="card">
