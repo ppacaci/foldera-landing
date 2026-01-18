@@ -4,13 +4,15 @@
   <link rel="icon" href="/favicon.ico" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta property="og:title" content="Foldera" />
+  <meta property="og:description" content="Evaluate your ETH with fixed terms and clear rules." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foldera.io" />
   <title>Foldera</title>
-
-  <meta name="description" content="Fixed-term ETH structure with fully transparent returns, bonuses, and exit rules." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Foldera" />
-  <meta property="og:description" content="Fixed-term ETH structure with fully transparent returns, bonuses, and exit rules." />
+  <meta property="og:description" content="Evaluate your ETH with fixed terms and clear rules." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foldera.io" />
   <meta property="og:image" content="https://foldera.io/og.png" />
@@ -18,8 +20,9 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Foldera" />
-  <meta name="twitter:description" content="Fixed-term ETH structure with fully transparent returns, bonuses, and exit rules." />
+  <meta name="twitter:description" content="Evaluate your ETH with fixed terms and clear rules." />
   <meta name="twitter:image" content="https://foldera.io/og.png" />
+  <meta name="description" content="Evaluate your ETH with fixed terms and clear rules." />
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -30,213 +33,585 @@
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background: #05070c;
       color: #eaf0ff;
     }
     a { color: inherit; text-decoration: none; }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 18px 60px; }
-    .nav { display:flex; justify-content:space-between; align-items:center; }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:700; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px; }
     .logo {
-      width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(135deg,#7ab4ff,#a078ff);
+      width: 34px; height: 34px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), rgba(255,255,255,0)),
+                  linear-gradient(135deg, rgba(120,180,255,.85), rgba(160,120,255,.85));
+      box-shadow: 0 10px 30px rgba(120,180,255,.18);
     }
     .pill {
-      font-size:12px; padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
+      font-size: 12px; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(8px);
     }
-    .hero { margin-top:26px; padding:44px 22px; border-radius:26px;
-      border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    }
-    h1 { font-size:44px; margin:0; }
-    h2 { font-size:16px; opacity:.8; font-weight:500; }
-    .subline { margin-top:8px; opacity:.7; }
-    .btn {
-      padding:12px 14px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      font-weight:600;
-    }
-    .btn.primary {
-      background:linear-gradient(135deg,#7ab4ff,#a078ff);
-      color:#071018;
-    }
-    .section { margin-top:64px; }
-    .section-title { font-size:32px; margin-bottom:6px; }
-    .section-subtitle { opacity:.75; margin-bottom:18px; }
 
-    .callout {
-      border-radius:18px;
+    .hero {
+      margin-top: 26px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(120,180,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(160,120,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 50% 100%, rgba(70,220,200,.10), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-inner { padding: 44px 22px; display:grid; gap: 26px; grid-template-columns: 1.2fr .8fr; align-items:center; }
+    @media (max-width: 860px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    h1 { margin:0; font-size: 44px; line-height: 1.05; letter-spacing: -0.8px; }
+    h2 { margin:14px 0 0; font-size: 16px; line-height: 1.55; color: rgba(234,240,255,.78); font-weight: 500; }
+    .subline { margin-top: 10px; font-size: 15px; color: rgba(234,240,255,.72); }
+
+    .cta { display:flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 14px; border-radius: 14px; font-weight: 650; font-size: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18); }
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(120,180,255,.95), rgba(160,120,255,.95));
+      border-color: rgba(255,255,255,.18);
+      color: #071018;
+    }
+    .btn.primary:hover { background: linear-gradient(135deg, rgba(120,180,255,1), rgba(160,120,255,1)); }
+
+    .note { margin-top: 10px; font-size: 12px; color: rgba(234,240,255,.60); }
+
+    .cardgrid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    @media (max-width: 860px) { .cardgrid { grid-template-columns: 1fr; } }
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 14px;
+    }
+    .card h3 { margin:0; font-size: 13px; letter-spacing: .2px; color: rgba(234,240,255,.92); }
+    .card p { margin:8px 0 0; font-size: 13px; line-height: 1.45; color: rgba(234,240,255,.70); }
+
+    .rightbox {
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      padding: 16px;
+    }
+    .steps { margin: 0; padding-left: 18px; color: rgba(234,240,255,.78); font-size: 13px; line-height: 1.65; }
+    .tagline { font-size: 12px; color: rgba(234,240,255,.62); margin-top: 10px; }
+
+    .footer { margin-top: 26px; font-size: 12px; color: rgba(234,240,255,.55); display:flex; justify-content:space-between; flex-wrap: wrap; gap: 10px; }
+
+    .bg-lines {
+      position:absolute; inset: -40px -40px auto -40px; height: 220px;
+      opacity:.18;
+      background-image: linear-gradient(to right, rgba(255,255,255,.18) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size: 38px 38px;
+      transform: skewY(-8deg);
+      pointer-events:none;
+    }
+
+    .trustbar{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .trustitem{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.05);
-      padding:16px;
-      font-size:14px;
-      line-height:1.6;
+      color:rgba(234,240,255,.70);
     }
-    .split {
+
+    .section.faq{ padding: 64px 0; }
+
+    .section-title{
+      font-size: 32px;
+      margin: 0 0 8px 0;
+    }
+
+    .section-subtitle{
+      margin: 0 0 24px 0;
+      opacity: .75;
+      line-height: 1.55;
+    }
+
+    .faq-list{
+      display: grid;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .faq-item{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-item summary{
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 16px;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .faq-item summary::-webkit-details-marker{ display:none; }
+
+    .faq-item summary:after{
+      content: "+";
+      float: right;
+      opacity: .8;
+    }
+
+    .faq-item[open] summary:after{ content: "–"; }
+
+    .faq-content{
+      padding: 0 16px 16px 16px;
+      opacity: .85;
+      line-height: 1.5;
+    }
+
+    /* ===== Added: Transparent Terms + Calculator styles (keeps existing design) ===== */
+    .section-block{
+      margin-top: 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 16px;
+    }
+    .section-block h3{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .2px;
+      color: rgba(234,240,255,.92);
+    }
+    .section-block p{
+      margin:8px 0 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(234,240,255,.72);
+    }
+    .mini-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
     }
-    @media(max-width:860px){ .split{grid-template-columns:1fr;} }
+    @media (max-width: 860px){ .mini-grid{ grid-template-columns:1fr; } }
 
-    table {
+    .mini-table{
       width:100%;
-      border-collapse:collapse;
-      margin-top:14px;
-      font-size:13px;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
     }
-    th,td {
-      border-bottom:1px solid rgba(255,255,255,.1);
-      padding:10px;
+    .mini-table th, .mini-table td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
       text-align:left;
+      color: rgba(234,240,255,.78);
+    }
+    .mini-table th{
+      font-size: 12px;
+      opacity: .75;
+      font-weight: 600;
     }
 
-    input,select {
-      width:100%;
-      padding:10px;
-      border-radius:10px;
-      background:#0b1020;
-      color:#eaf0ff;
-      border:1px solid rgba(255,255,255,.2);
-      margin:6px 0 12px;
+    .calc-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
     }
-    .result { margin-top:8px; font-size:15px; }
-    .footer {
-      margin-top:60px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.1);
-      font-size:12px;
-      opacity:.6;
-      display:flex;
-      justify-content:space-between;
+    @media (max-width: 860px){ .calc-wrap{ grid-template-columns:1fr; } }
+
+    .calc-input label{
+      display:block;
+      font-size: 12px;
+      opacity: .75;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    .calc-input input, .calc-input select{
+      width:100%;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      color: rgba(234,240,255,.92);
+      outline: none;
+    }
+    .calc-input input:focus, .calc-input select:focus{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(0,0,0,.30);
+    }
+    .calc-result{
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(234,240,255,.80);
+    }
+    .calc-result .row{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .calc-result .row strong{
+      color: rgba(234,240,255,.95);
+    }
+    .calc-note{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(234,240,255,.62);
+      line-height: 1.55;
+    }
+    code.inline{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      color: rgba(234,240,255,.85);
+      white-space: nowrap;
     }
   </style>
 </head>
 
 <body>
-<div class="wrap">
-
-  <div class="nav">
-    <div class="brand"><div class="logo"></div>Foldera</div>
-    <div class="pill">Early access · No funds accepted</div>
-  </div>
-
-  <section class="hero">
-    <h1>Evaluate your ETH with fixed terms and clear rules.</h1>
-    <h2>All returns, bonuses, and exit costs are disclosed upfront.</h2>
-    <div class="subline">Commitment is rewarded. Breaking commitment has a cost.</div>
-    <div style="margin-top:18px;">
-      <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSec_Z_6JiVFWvFDCpWlUfpiWAo_o3R1IYg_cO2fS1TrEJ4SoA/viewform" target="_blank">Join the waitlist</a>
-    </div>
-  </section>
-
-  <!-- BONUS EXPLANATION -->
-  <section class="section">
-    <h2 class="section-title">Bonus mechanism (final)</h2>
-    <p class="section-subtitle">
-      Bonuses are earned only by extending the commitment period.
-      There are no standalone boosts.
-    </p>
-
-    <div class="callout">
-      <strong>Single rule:</strong><br/>
-      • 12 months → <strong>15 months</strong><br/>
-      • 24 months → <strong>26 months</strong><br/><br/>
-      Bonus depends on your <strong>entry rank</strong>.
-      Any early exit cancels the bonus completely.
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Foldera</div>
+      </div>
+      <div class="pill">Early access</div>
     </div>
 
-    <table>
-      <tr><th>Entry rank</th><th>Extra return</th><th>Multiplier</th></tr>
-      <tr><td>First 50</td><td>+100%</td><td>2×</td></tr>
-      <tr><td>Next tier</td><td>+80%</td><td>1.8×</td></tr>
-      <tr><td>Next tier</td><td>+60%</td><td>1.6×</td></tr>
-      <tr><td>Next tier</td><td>+40%</td><td>1.4×</td></tr>
-      <tr><td>Next tier</td><td>+20%</td><td>1.2×</td></tr>
-    </table>
-  </section>
+    <section class="hero">
+      <div class="bg-lines"></div>
+      <div class="hero-inner">
+        <div>
+          <h1>Evaluate your ETH with fixed terms and clear rules.</h1>
+          <h2>Terms, conditions, and exit rules are defined upfront.</h2>
+          <div class="subline">Designed for long-term thinking, not short-term hype.</div>
 
-  <!-- CALCULATOR -->
-  <section class="section">
-    <h2 class="section-title">Outcome calculator</h2>
-    <p class="section-subtitle">
-      Choose your ETH amount and entry rank.
-      Compare standard vs extended commitments instantly.
-    </p>
+          <div class="cta">
+            <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSec_Z_6JiVFWvFDCpWlUfpiWAo_o3R1IYg_cO2fS1TrEJ4SoA/viewform" target="_blank" rel="noopener">Join the waitlist</a>
+            <a class="btn" href="#terms">See terms & calculator</a>
+            <a class="btn" href="#faq">Read FAQ</a>
+          </div>
+          <div class="note">Early access registrations are collected via a short form. No payment required.</div>
 
-    <div class="split">
-      <div class="callout">
-        <label>ETH amount</label>
-        <input id="eth" type="number" value="1" min="0.1" step="0.1">
+          <div class="trustbar">
+            <div class="trustitem">No payment</div>
+            <div class="trustitem">No commitment</div>
+            <div class="trustitem">Flexible liquidity over time</div>
+            <div class="trustitem">Early access benefits (limited)</div>
+            <div class="trustitem">Validation before automation</div>
+            <div class="trustitem">Global early access</div>
+          </div>
+        </div>
 
-        <label>Entry rank</label>
-        <select id="tier">
-          <option value="1">First 50 (+100%)</option>
-          <option value="0.8">+80%</option>
-          <option value="0.6">+60%</option>
-          <option value="0.4">+40%</option>
-          <option value="0.2">+20%</option>
-        </select>
+        <div class="rightbox">
+          <div class="pill" style="display:inline-block; margin-bottom:12px;">How it works</div>
+          <ol class="steps">
+            <li>Deposit ETH</li>
+            <li>Choose a fixed term</li>
+            <li>Hold, exit early, or complete the term</li>
+          </ol>
+          <div class="tagline">No guarantees. No hidden rules. Participation involves risk.</div>
+        </div>
+      </div>
+    </section>
 
-        <label>12-month base return</label>
-        <select id="rate">
-          <option value="0.12">12%</option>
-          <option value="0.14">14%</option>
-          <option value="0.16">16%</option>
-        </select>
+    <!-- ===== Added: Transparent Terms + Bonus + Calculator ===== -->
+    <section id="terms" class="section faq">
+      <div class="container">
+        <h2 class="section-title">Transparent terms</h2>
+        <p class="section-subtitle">Everything is disclosed upfront — base returns, bonus tiers, and a calculator to see outcomes instantly.</p>
+
+        <div class="section-block">
+          <h3>Core returns (no bonus)</h3>
+          <p>
+            <strong>6 months:</strong> <code class="inline">+4% to +4.5%</code> (total)<br/>
+            <strong>12 months:</strong> <code class="inline">+12% to +16%</code> (annual target, repriced yearly)<br/>
+            <strong>24 months:</strong> <code class="inline">+26% to +35%</code> (total, conditions locked upfront)<br/>
+            <span class="calc-note">Non-compounding. Short term is expressed as total return (not annualized).</span>
+          </p>
+        </div>
+
+        <div class="section-block">
+          <h3>Bonus mechanism (final — no Option A / B)</h3>
+          <p>
+            Bonus is earned only by extending the commitment period. There are no standalone boosts.<br/><br/>
+            • <strong>12 months → 15 months</strong><br/>
+            • <strong>24 months → 26 months</strong><br/><br/>
+            Bonus depends on <strong>entry rank</strong>. Any early exit cancels the bonus completely.
+          </p>
+
+          <table class="mini-table" aria-label="Bonus tiers">
+            <thead>
+              <tr>
+                <th>Entry rank</th>
+                <th>Extra return</th>
+                <th>Multiplier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>First 50</strong></td><td>+100%</td><td>2×</td></tr>
+              <tr><td>Next tier</td><td>+80%</td><td>1.8×</td></tr>
+              <tr><td>Next tier</td><td>+60%</td><td>1.6×</td></tr>
+              <tr><td>Next tier</td><td>+40%</td><td>1.4×</td></tr>
+              <tr><td>Next tier</td><td>+20%</td><td>1.2×</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block" id="calculator">
+          <h3>Outcome calculator (12/15 and 24/26 — shown together)</h3>
+          <p>Pick your ETH amount and entry tier. You will see standard vs extended outcomes in one view.</p>
+
+          <div class="calc-wrap">
+            <div class="calc-input">
+              <label>ETH amount</label>
+              <input id="calcEth" type="number" min="0.1" step="0.1" value="1" />
+
+              <label>Entry tier (based on how early you join)</label>
+              <select id="calcTier">
+                <option value="1">First 50 — +100% (2×)</option>
+                <option value="0.8">Tier 2 — +80% (1.8×)</option>
+                <option value="0.6">Tier 3 — +60% (1.6×)</option>
+                <option value="0.4">Tier 4 — +40% (1.4×)</option>
+                <option value="0.2">Tier 5 — +20% (1.2×)</option>
+              </select>
+
+              <label>12-month base return (annual target)</label>
+              <select id="calcBase12">
+                <option value="0.12">12%</option>
+                <option value="0.14">14%</option>
+                <option value="0.16">16%</option>
+              </select>
+
+              <label>24-month base return (total)</label>
+              <select id="calcBase24">
+                <option value="0.26">26%</option>
+                <option value="0.30">30%</option>
+                <option value="0.35">35%</option>
+              </select>
+
+              <div class="calc-note">
+                Calculator math is intentionally simple and transparent:
+                <br/>• 15-month bonus = 12-month return × (1 + tierExtra)
+                <br/>• 26-month bonus = 24-month return × (1 + tierExtra)
+              </div>
+            </div>
+
+            <div class="calc-result">
+              <div class="row" id="out12"></div>
+              <div class="row" id="out15"></div>
+              <div class="row" id="out24"></div>
+              <div class="row" id="out26"></div>
+
+              <div class="calc-note">
+                Notes:
+                <br/>• Bonuses require full completion
+                <br/>• Any early exit cancels bonus
+                <br/>• This page is informational — early access currently accepts no funds
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- ===== End Added Section ===== -->
+
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">Short answers, clear rules.</p>
+
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>What is Foldera?</summary>
+            <div class="faq-content">
+              Foldera explores fixed-term ETH-based structures with clear rules and defined exits.
+              Early access is used to measure interest and shape the structure.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is this live?</summary>
+            <div class="faq-content">
+              No. Foldera is currently in an early access phase. No funds are accepted at this stage.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does it work?</summary>
+            <div class="faq-content">
+              Participants indicate preferred terms and amounts. These inputs help define the first structure
+              before anything goes live.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is there any commitment during early access?</summary>
+            <div class="faq-content">
+              No. Early access does not require payment or commitment.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Which assets are supported?</summary>
+            <div class="faq-content">
+              Initial exploration is focused on ETH. Other assets may be evaluated based on interest.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What happens next?</summary>
+            <div class="faq-content">
+              If sufficient interest is confirmed, the first structure will be finalized and shared with early
+              access participants.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Who is behind Foldera?</summary>
+            <div class="faq-content">
+              The focus is on the structure, not individuals. Foldera is designed as a product-led, anonymous initiative.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is this an investment offer?</summary>
+            <div class="faq-content">
+              No. This site does not offer investments, guarantees, or financial advice.
+            </div>
+          </details>
+
+          <!-- Added: FAQ entry aligned with new terms -->
+          <details class="faq-item">
+            <summary>How do bonuses work?</summary>
+            <div class="faq-content">
+              Bonuses are earned only by extending commitment: 12→15 months or 24→26 months.
+              Bonus size depends on entry rank (tiers). Any early exit cancels bonus completely.
+              Use the calculator on this page to see outcomes instantly.
+            </div>
+          </details>
+
+        </div>
       </div>
 
-      <div class="callout">
-        <strong>Results</strong>
-        <div class="result" id="r12"></div>
-        <div class="result" id="r15"></div>
-        <div class="result" id="r24"></div>
-        <div class="result" id="r26"></div>
-
-        <p style="font-size:12px;opacity:.7;margin-top:10px;">
-          • No compounding<br/>
-          • Bonus requires full completion<br/>
-          • Early exit cancels bonus
-        </p>
+      <div class="footer">
+        <div>© <span id="y"></span> Foldera</div>
+        <div>contact: info@foldera.io</div>
       </div>
-    </div>
-  </section>
-
-  <div class="footer">
-    <div>© <span id="y"></span> Foldera</div>
-    <div>contact: info@foldera.io</div>
+    </section>
   </div>
 
-</div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <script>
+    const btn = document.querySelector('a.btn.primary');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        console.log('waitlist_click');
+      });
+    }
+  </script>
 
-  function calc(){
-    const eth = parseFloat(document.getElementById('eth').value)||0;
-    const tier = parseFloat(document.getElementById('tier').value);
-    const rate = parseFloat(document.getElementById('rate').value);
+  <script>
+    document.querySelectorAll('.faq-item').forEach((d) => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document.querySelectorAll('.faq-item').forEach((o) => {
+            if (o !== d) o.open = false;
+          });
+        }
+      });
+    });
+  </script>
 
-    const r12 = eth * (1 + rate);
-    const r15 = eth * (1 + rate * (1 + tier));
-    const r24 = eth * (1 + rate * 2);
-    const r26 = eth * (1 + rate * 2 * (1 + tier));
+  <!-- Added: Calculator logic (scoped, does not interfere with FAQ scripts) -->
+  <script>
+    function fmtEth(x) {
+      if (!isFinite(x)) return "—";
+      return x.toFixed(4) + " ETH";
+    }
 
-    document.getElementById('r12').innerHTML = `12 months: <strong>${r12.toFixed(4)} ETH</strong>`;
-    document.getElementById('r15').innerHTML = `15 months (bonus): <strong>${r15.toFixed(4)} ETH</strong>`;
-    document.getElementById('r24').innerHTML = `24 months: <strong>${r24.toFixed(4)} ETH</strong>`;
-    document.getElementById('r26').innerHTML = `26 months (bonus): <strong>${r26.toFixed(4)} ETH</strong>`;
-  }
+    function calcOutcomes() {
+      const eth = parseFloat(document.getElementById('calcEth').value) || 0;
+      const tierExtra = parseFloat(document.getElementById('calcTier').value) || 0;
 
-  document.querySelectorAll('input,select').forEach(e => e.addEventListener('input', calc));
-  calc();
-</script>
+      const base12 = parseFloat(document.getElementById('calcBase12').value) || 0;
+      const base24 = parseFloat(document.getElementById('calcBase24').value) || 0;
 
+      // Standard outcomes
+      const out12 = eth * (1 + base12);
+      const out24 = eth * (1 + base24);
+
+      // Extended outcomes with tier-based extra return:
+      // 15-month: returnRate = base12 * (1 + tierExtra)
+      const rate15 = base12 * (1 + tierExtra);
+      const out15 = eth * (1 + rate15);
+
+      // 26-month: returnRate = base24 * (1 + tierExtra)
+      const rate26 = base24 * (1 + tierExtra);
+      const out26 = eth * (1 + rate26);
+
+      document.getElementById('out12').innerHTML =
+        `<strong>12 months (no bonus)</strong><br/>Outcome: <strong>${fmtEth(out12)}</strong> &nbsp; <span style="opacity:.75;">(rate: ${(base12*100).toFixed(0)}%)</span>`;
+
+      document.getElementById('out15').innerHTML =
+        `<strong>15 months (12→15, bonus tier applied)</strong><br/>Outcome: <strong>${fmtEth(out15)}</strong> &nbsp; <span style="opacity:.75;">(rate: ${(rate15*100).toFixed(1)}%)</span>`;
+
+      document.getElementById('out24').innerHTML =
+        `<strong>24 months (no bonus)</strong><br/>Outcome: <strong>${fmtEth(out24)}</strong> &nbsp; <span style="opacity:.75;">(rate: ${(base24*100).toFixed(0)}%)</span>`;
+
+      document.getElementById('out26').innerHTML =
+        `<strong>26 months (24→26, bonus tier applied)</strong><br/>Outcome: <strong>${fmtEth(out26)}</strong> &nbsp; <span style="opacity:.75;">(rate: ${(rate26*100).toFixed(1)}%)</span>`;
+    }
+
+    const calcInputs = ['calcEth','calcTier','calcBase12','calcBase24'];
+    calcInputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', calcOutcomes);
+      if (el) el.addEventListener('change', calcOutcomes);
+    });
+
+    calcOutcomes();
+  </script>
 </body>
 </html>
