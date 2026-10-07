@@ -196,6 +196,21 @@
       opacity: .85;
       line-height: 1.5;
     }
+  
+    /* Foldera terms + calculator */
+    .section.product{padding:64px 0 0}.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .panel{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:18px;padding:16px}
+    .panel h3{margin:0;font-size:14px}.panel p{font-size:13px;line-height:1.55;color:rgba(234,240,255,.72)}
+    .rate{font-size:28px;font-weight:750;margin:8px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.1);border-radius:16px;margin-top:14px}
+    .terms-table{width:100%;border-collapse:collapse;min-width:620px}.terms-table th,.terms-table td{padding:11px 13px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
+    .terms-table th{font-size:11px;color:rgba(234,240,255,.58);text-transform:uppercase}.terms-table tr:last-child td{border-bottom:0}
+    .hi{font-weight:700;color:#eaf0ff}.calc{border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;background:radial-gradient(700px 350px at 100% 0%,rgba(160,120,255,.12),transparent 60%),rgba(255,255,255,.04)}
+    .field label{display:block;font-size:12px;color:rgba(234,240,255,.66);margin:0 0 7px}.field input{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.28);color:#eaf0ff;font:inherit}
+    .tierbox{margin-top:12px;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;font-size:13px}.results{display:grid;gap:10px}.result{padding:13px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04);display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .result.bonus{border-color:rgba(140,150,255,.28);background:rgba(130,120,255,.07)}.rv{font-size:17px;font-weight:750;white-space:nowrap}.small{font-size:12px;color:rgba(234,240,255,.6);line-height:1.5}
+    @media(max-width:860px){.product-grid,.grid2{grid-template-columns:1fr}.rv{font-size:15px}}
+
   </style>
 </head>
 
@@ -220,6 +235,7 @@
           <div class="cta">
             <!-- TODO: Replace FORM_LINK with your Google Form link -->
             <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSec_Z_6JiVFWvFDCpWlUfpiWAo_o3R1IYg_cO2fS1TrEJ4SoA/viewform" target="_blank" rel="noopener">Join the waitlist</a>
+            <a class="btn" href="#calculator">Calculate</a>
             <a class="btn" href="#faq">Read FAQ</a>
           </div>
           <div class="note">Early access registrations are collected via a short form. No payment required.</div>
@@ -244,6 +260,94 @@
           </ol>
           <div class="tagline">No guarantees. No hidden rules. Participation involves risk.</div>
         </div>
+      </div>
+    </section>
+
+
+    <section id="returns" class="section product">
+      <div class="container">
+        <h2 class="section-title">Core terms</h2>
+        <p class="section-subtitle">Base returns before any early-participant extension bonus.</p>
+        <div class="product-grid">
+          <div class="panel"><h3>6 months</h3><div class="rate">4%–4.5%</div><p>Total return. No extension bonus. After the 48-hour reconsideration window, general early exit is unavailable.</p></div>
+          <div class="panel"><h3>12 months</h3><div class="rate">12%–16%</div><p>Base annual return. A new 12-month position is priced at the rate available when that new term begins. No automatic compounding.</p></div>
+          <div class="panel"><h3>24 months</h3><div class="rate">26%–35%</div><p>Total return. The conditions agreed at entry remain defined for the full 24-month term. No automatic compounding.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bonus" class="section product">
+      <div class="container">
+        <h2 class="section-title">Early-participant extension bonus</h2>
+        <p class="section-subtitle">The bonus rewards a longer commitment. It is not paid upfront and is earned only after completing the extended term.</p>
+        <div class="grid2">
+          <div class="panel"><h3>12 → 15 months</h3><p>Extend a 12-month commitment by 3 months. On full completion, your applicable early-participant multiplier is applied to the 12-month base return.</p></div>
+          <div class="panel"><h3>24 → 26 months</h3><p>Extend a 24-month commitment by 2 months. On full completion, the same early-participant multiplier is applied to the 24-month base return.</p></div>
+        </div>
+        <div class="table-wrap">
+          <table class="terms-table">
+            <thead><tr><th>Participant number</th><th>Extra on base return</th><th>Multiplier</th><th>15% base example</th></tr></thead>
+            <tbody>
+              <tr><td>1–50</td><td class="hi">+100%</td><td>2.0×</td><td>30%</td></tr>
+              <tr><td>51–100</td><td class="hi">+80%</td><td>1.8×</td><td>27%</td></tr>
+              <tr><td>101–150</td><td class="hi">+60%</td><td>1.6×</td><td>24%</td></tr>
+              <tr><td>151–200</td><td class="hi">+40%</td><td>1.4×</td><td>21%</td></tr>
+              <tr><td>201–250</td><td class="hi">+20%</td><td>1.2×</td><td>18%</td></tr>
+              <tr><td>251+</td><td>No bonus</td><td>1.0×</td><td>15%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">Bonus percentages increase the base return, not the principal. Example: a +100% bonus on a 15% base return produces a 30% total return. Any early exit cancels the extension bonus.</div>
+      </div>
+    </section>
+
+    <section id="calculator" class="section product">
+      <div class="container">
+        <h2 class="section-title">Outcome calculator</h2>
+        <p class="section-subtitle">Enter your ETH amount and participant number. See 12, 15, 24 and 26-month outcomes together.</p>
+        <div class="calc">
+          <div class="grid2">
+            <div>
+              <div class="field"><label for="ethAmount">ETH amount</label><input id="ethAmount" type="number" min="0.01" step="0.01" value="1"></div>
+              <div class="field" style="margin-top:14px"><label for="participantNo">Participant number</label><input id="participantNo" type="number" min="1" step="1" value="25"></div>
+              <div id="tierDisplay" class="tierbox"></div>
+              <p class="small">For one-at-a-glance comparison, the calculator uses the midpoint of the published base ranges: 14% for 12 months and 30.5% for 24 months. Actual entry terms are the rate disclosed and agreed at entry.</p>
+            </div>
+            <div class="results">
+              <div class="result"><div><b>12 months</b><div class="small">Standard · 14% example</div></div><div id="r12" class="rv">—</div></div>
+              <div class="result bonus"><div><b>15 months</b><div id="rate15" class="small">Extended</div></div><div id="r15" class="rv">—</div></div>
+              <div class="result"><div><b>24 months</b><div class="small">Standard · 30.5% example</div></div><div id="r24" class="rv">—</div></div>
+              <div class="result bonus"><div><b>26 months</b><div id="rate26" class="small">Extended</div></div><div id="r26" class="rv">—</div></div>
+            </div>
+          </div>
+          <p class="small">Illustrative only. No compounding is assumed. Extension bonuses require full completion of the 15- or 26-month commitment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="exits" class="section product">
+      <div class="container">
+        <h2 class="section-title">Exit rules</h2>
+        <p class="section-subtitle">Commitment matters. If you leave early, the cost is known before you enter.</p>
+        <div class="grid2">
+          <div class="panel"><h3>First 48 hours</h3><p>Exit within 48 hours from deposit with a <b>2% principal deduction</b>. No return or bonus is earned.</p></div>
+          <div class="panel"><h3>First 30 participants</h3><p>Special checkpoints: month 6 on a 12-month term; months 9 and 15 on a 24-month term. Principal deduction is <b>0%</b>, but all returns and bonuses are forfeited.</p></div>
+        </div>
+        <div class="table-wrap">
+          <table class="terms-table">
+            <thead><tr><th>Term</th><th>Early exit timing</th><th>Principal deduction</th><th>Return / bonus</th></tr></thead>
+            <tbody>
+              <tr><td>6 months</td><td>After first 48 hours</td><td>General early exit unavailable</td><td>—</td></tr>
+              <tr><td>12 months</td><td>Before month 6</td><td class="hi">12%</td><td>Forfeited</td></tr>
+              <tr><td>12 months</td><td>Month 6 to before month 9</td><td class="hi">9%</td><td>Forfeited</td></tr>
+              <tr><td>12 months</td><td>Month 9 to before month 12</td><td class="hi">6%</td><td>Forfeited</td></tr>
+              <tr><td>24 months</td><td>Before month 12</td><td class="hi">12%</td><td>Forfeited</td></tr>
+              <tr><td>24 months</td><td>Month 12 to before month 18</td><td class="hi">9%</td><td>Forfeited</td></tr>
+              <tr><td>24 months</td><td>Month 18 to before month 24</td><td class="hi">6%</td><td>Forfeited</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">For eligible first-30 participants, an exact checkpoint overrides the general early-exit deduction. Extended-term bonus is forfeited if the extended commitment is not completed.</div>
       </div>
     </section>
 
@@ -351,5 +455,33 @@
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <script>
+    function bonusTier(n){
+      if(n<=50)return {x:1,label:"Tier 1 · +100% · participants 1–50"};
+      if(n<=100)return {x:.8,label:"Tier 2 · +80% · participants 51–100"};
+      if(n<=150)return {x:.6,label:"Tier 3 · +60% · participants 101–150"};
+      if(n<=200)return {x:.4,label:"Tier 4 · +40% · participants 151–200"};
+      if(n<=250)return {x:.2,label:"Tier 5 · +20% · participants 201–250"};
+      return {x:0,label:"No extension bonus · participant 251+"};
+    }
+    function eth(v){return v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:4})+" ETH"}
+    function calculateFoldera(){
+      const amount=Math.max(0,parseFloat(document.getElementById("ethAmount").value)||0);
+      const no=Math.max(1,Math.floor(parseFloat(document.getElementById("participantNo").value)||1));
+      const t=bonusTier(no), b12=.14, b24=.305, b15=b12*(1+t.x), b26=b24*(1+t.x);
+      document.getElementById("tierDisplay").innerHTML="<b>"+t.label+"</b>"+(no<=30?"<br><span class='small'>Also eligible for first-30 checkpoint privileges.</span>":"");
+      document.getElementById("r12").textContent=eth(amount*(1+b12));
+      document.getElementById("r15").textContent=eth(amount*(1+b15));
+      document.getElementById("r24").textContent=eth(amount*(1+b24));
+      document.getElementById("r26").textContent=eth(amount*(1+b26));
+      document.getElementById("rate15").textContent="Extended · "+(b15*100).toFixed(1)+"% example return";
+      document.getElementById("rate26").textContent="Extended · "+(b26*100).toFixed(1)+"% example return";
+    }
+    document.getElementById("ethAmount").addEventListener("input",calculateFoldera);
+    document.getElementById("participantNo").addEventListener("input",calculateFoldera);
+    calculateFoldera();
+  </script>
+
 </body>
 </html>
